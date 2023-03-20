@@ -1,0 +1,16 @@
+/ip firewall address-list
+add address=mercadopago.com.ar list=mercadopago
+add address=api.mercadopago.com list=mercadopago
+add address=www.mercadolibre.com list=mercadopago
+add address=www.mercadopago.com list=mercadopago
+add address=cdnjs.cloudflare.com list=mercadopago
+add address=http2.mlstatic.com list=mercadopago
+add address=code.jquery.com list=mercadopago
+add address=events.mercadopago.com list=mercadopago
+add address=auth.mercadopago.com list=mercadopago
+add address=auth.mercadopago.com.ar list=mercadopago
+add address=api.mercadopago.com.ar list=mercadopago
+add address=api.mercadolibre.com list=mercadopago
+add address=mercadolivre.com list=mercadopago
+add address=sdk.mercadopago.com list=mercadopago
+# por ejemplo para permitir en Hotspot->Walled Garden IP List->dst. Address List
