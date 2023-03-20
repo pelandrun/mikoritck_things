@@ -1,0 +1,21 @@
+interface Dialer111
+ mtu 1492
+ ip address negotiated
+ ip nat outside
+ ip virtual-reassembly
+ encapsulation ppp
+ ip tcp adjust-mss 1452
+ no ip mroute-cache
+ dialer pool 111
+ dialer-group 111
+ ppp authentication pap callin
+ ppp chap refuse
+ ppp ms-chap refuse
+ ppp ms-chap-v2 refuse
+ ppp pap sent-username xxxxxxxx password 0 xxxxxxxx
+ ppp ipcp dns request
+ ppp ipcp route default
+ ppp ipcp address accept
+end
+!
+dialer-list 111 protocol ip permit
