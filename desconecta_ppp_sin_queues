@@ -1,0 +1,12 @@
+:foreach i in=[/ppp active find] do={
+ :local user [/ppp active get $i name]
+ :local relatedQueues false
+ :local relatedQueues [/queue simple find name~"<pppoe-$user>"]
+ #:put $relatedQueues 
+ #:local qname [/queue simple get $relatedQueues name]
+ if ([:len $relatedQueues] = 0) do={
+  :put "$user"
+  :if ([:len $i] > 0) do={
+   /ppp active remove $i
+  }
+}
