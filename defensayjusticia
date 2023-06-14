@@ -1,0 +1,11 @@
+add action=add-src-to-address-list address-list=BADBOYZ_SIP_SCANNER address-list-timeout=1d1h chain=DEFENSA comment=BADBOYZ_SIP_SCANNER connection-limit=8,32 \
+    connection-state=new dst-port=5060 log=yes log-prefix=BADBOYZ_SIP_SCANNER protocol=udp src-address-list=!GESTION
+add action=add-src-to-address-list address-list=BADBOYZ_WINBOX_SCANNER address-list-timeout=1d1h chain=DEFENSA comment=BADBOYZ_WINBOX_SCANNER connection-limit=20,32 \
+    connection-state=new dst-port=8291,8729 log=yes log-prefix=BADBOYZ_WINBOX_SCANNER protocol=tcp src-address-list=!GESTION tcp-flags=syn
+add action=add-src-to-address-list address-list=BADBOYZ_TELNET_SCANNER address-list-timeout=1d1h chain=DEFENSA comment=BADBOYZ_TELNET_SCANNER connection-limit=20,32 \
+    connection-state=new dst-port=22,23,3389 log=yes log-prefix=BADBOYZ_TELNET_SCANNER protocol=tcp src-address-list=!GESTION tcp-flags=syn
+add action=add-src-to-address-list address-list=BADBOYZ_8080_SCANNER address-list-timeout=1d1h chain=DEFENSA comment=BADBOYZ_8080_SCANNER connection-limit=20,32 \
+    connection-state=new dst-port=8080 log=yes log-prefix=BADBOYZ_8080_SCANNER protocol=tcp src-address-list=!GESTION tcp-flags=syn
+add action=add-src-to-address-list address-list=BADBOYZ_TCP_SCANNER address-list-timeout=1h chain=DEFENSA comment=BADBOYZ_TCP_SCANNER connection-state=new log=yes \
+    log-prefix=BADBOYZ_TCP_SCANNER protocol=tcp psd=500,3s,1,1 src-address-list=!BADBOYZ_TCP_SCANNER tcp-flags=syn
+add action=return chain=DEFENSA
