@@ -9,3 +9,16 @@ add action=add-src-to-address-list address-list=BADBOYZ_8080_SCANNER address-lis
 add action=add-src-to-address-list address-list=BADBOYZ_TCP_SCANNER address-list-timeout=1h chain=DEFENSA comment=BADBOYZ_TCP_SCANNER connection-state=new log=yes \
     log-prefix=BADBOYZ_TCP_SCANNER protocol=tcp psd=500,3s,1,1 src-address-list=!BADBOYZ_TCP_SCANNER tcp-flags=syn
 add action=return chain=DEFENSA
+
+add action=drop chain=prerouting in-interface-list=WANs protocol=udp src-port=19
+add action=drop chain=prerouting dst-address-type=local in-interface-list=WANs protocol=udp src-port=19
+add action=drop chain=prerouting in-interface-list=!WANs protocol=udp src-port=19,389,11211
+add action=drop chain=prerouting dst-address-type=local dst-port=19 protocol= udp
+add action=drop chain=prerouting in-interface-list=WANs log=yes log-prefix= echo protocol=udp src-port=7
+add action=drop chain=prerouting in-interface-list=WANs protocol=udp src-port=11211
+add action=drop chain=prerouting in-interface-list=WANs protocol=udp src-port=389
+add action=drop chain=prerouting in-interface-list=WANs protocol=udp src-port=161,162
+add action=drop chain=prerouting in-interface-list=WANs protocol=udp src-port=7,19,389,11211
+add action=drop chain=prerouting dst-address-type=local in-interface-list=WANs protocol=udp src-port=7,19,389,11211
+add action=drop chain=prerouting dst-address-type=local dst-port=53 in-interface-list=WANs log-prefix=dns_in protocol=udp
+add action=drop chain=prerouting dst-port=53 in-interface-list=WANs log-prefix=dns_in protocol=udp
